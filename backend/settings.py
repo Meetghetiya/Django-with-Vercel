@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bot',
 ]
 
 MIDDLEWARE = [
@@ -82,13 +83,23 @@ WSGI_APPLICATION = 'backend.wsgi.app'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+#     }
+# }
+# DATABASES['default'] = dj_database_url.config()
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME':'movie',
+        'CLIENT':{
+            "host":"mongodb+srv://MeetGhetiya:meetgpatel@cluster0.8mil8ub.mongodb.net/"
+        }
     }
 }
-DATABASES['default'] = dj_database_url.config()
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -137,3 +148,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles_build' / 'static'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+TG_API_ID = 7506821
+TG_API_HASH = "ac6e8365d1a9c9df59dc796fc6cb661f"
